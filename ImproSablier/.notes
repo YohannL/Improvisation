@@ -1,0 +1,17 @@
+requirements : pip freeze > .\requirements.txt
+
+
+run the tests : python -m pytest
+
+
+
+run Api : 
+set FLASK_APP=main.py
+flask run --host 0.0.0.0 --port 5001
+
+python main.py
+
+
+run WebApp : 
+set FLASK_APP=WebApp/main.py
+flask run --host 0.0.0.0 --port 5000
