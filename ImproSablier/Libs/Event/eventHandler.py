@@ -11,7 +11,6 @@ class eventHandler():
         handleFunction = self._handle_switchFunctionHandler(eventToHandle)
         if handleFunction is not None:
             handleFunction(eventToHandle)
-        print(ControllerModel().get_PlayerList().toJSON())
 
     def _handle_switchFunctionHandler(self, eventToHandle: event):
 

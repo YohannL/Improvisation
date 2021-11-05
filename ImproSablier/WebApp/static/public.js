@@ -1,13 +1,12 @@
 
 var API="http://192.168.1.34:5001/";
-var IP;
+var ID;
 
 
 function connect(){
-    isConnected = getMyIp();
-    console.error(isConnected);
+    isConnected = requestToApi_Connect();
     if ( isConnected == true){
-        requestToApi_Connect();
+        
         document.querySelector('#ButtonConnect').innerText = 'Connected';
 
         const elRed = document.getElementById("Red");
@@ -24,10 +23,10 @@ function connect(){
     }
 }
 
-function getMyIp(){
-    isConnected = true;
+function requestToApi_Connect(){
+    
     var request = new XMLHttpRequest();
-    request.open('GET', API+"get_my_ip", false);  // `false` makes the request synchronous
+    request.open('POST', API+"api/v1/public/", false);  // `false` makes the request synchronous
     try{
         request.send(null);
     }catch(error){
@@ -36,50 +35,58 @@ function getMyIp(){
 
     if (request.status === 200) {
         const data = JSON.parse(request.responseText);
-        console.log(data.ip);
-        IP = data.ip;
+        console.log(data.id);
+        ID = data.id;
     }else{
-        isConnected = false;
-    }
-    return isConnected;
-}
-
-function requestToApi_Connect(){
-    // const params = {
-    //     "ip": "127.0.0.1",
-    // };
-    // const options = {
-    //     method: 'POST',
-    //     body: JSON.stringify( params )  
-    // };
-    // fetch( API+"api/v1/public/"+IP, options )
-    // .then( response => response.json() )
-    // .then( response => {
-    //     alert(response);
-    // } );
-    
-    var request = new XMLHttpRequest();
-    request.open('POST', API+"api/v1/public/"+IP, false);  // `false` makes the request synchronous
-    try{
-        request.send(null);
-    }catch(error){
         return false;
     }
     return true;
 }
 
 function redHandler(){
-    alert("redHandler");
+    // useTime("RED");
+    response = getPlayerInfo();
+    console.log("Reponse",JSON.parse(response.response));
 }
 function blueHandler(){
-    alert("blueHandler");
+    useTime("BLUE");
 }
 function greenHandler(){
-    alert("greenHandler");
+    useTime("GREEN");
 }
 function yellowHandler(){
-    alert("yellowHandler");
+    useTime("YELLOW");
 }
+
+ 
+
+function useTime(color){
+    return sendToApi('POST',API+"api/v1/public/"+ID+"/time/use/"+color);
+}
+
+function getPlayerInfo(){
+    return sendToApi('GET', API+"api/v1/player")
+}
+
+function sendToApi(method,url){
+    var request = new XMLHttpRequest();
+    request.open(method, url , false);  // `false` makes the request synchronous
+    try{
+        request.send(null);
+    }catch(error){
+        return false;
+    }
+
+    if (request.status === 200) {
+        console.log(200);
+        return JSON.parse(request.responseText);
+    }else{
+        return false;
+    }
+    return request.responseText;
+}
+
+
 function loop(){
     alert("loop");
 }

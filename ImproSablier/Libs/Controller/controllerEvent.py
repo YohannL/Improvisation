@@ -5,7 +5,7 @@ from Libs.Model.enumeration import statusType
 
 class ControllerEvent():
     _instance = None
-
+    _public_nb = 0
     def __new__(cls):
         if cls._instance is None:
             print('Creating the ControllerEvent')
@@ -34,7 +34,9 @@ class ControllerEvent():
         self._add_event(eventPublicAddTime(player))
 
     def public_create(self,ip):
-        self._add_event(eventPublicConnect(ip))
+        self._public_nb+=1
+        self._add_event(eventPublicConnect( self._public_nb))
+        return self._public_nb
 
     def admin_changeStatus(self, status):
         #Update controller model

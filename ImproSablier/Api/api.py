@@ -1,8 +1,10 @@
 from Libs.Controller.controllerEvent import ControllerEvent
 from flask import Flask, jsonify, request
+
+from Libs.Controller.controllerModel import ControllerModel
  
 ApiApp = Flask(__name__)
-ApiDbg=False
+ApiDbg=True
 ApiPort=5001
 ApiHost='0.0.0.0'
 
@@ -62,16 +64,6 @@ def public_useTime(ip,player):
     except:
         return jsonify(status=400, message = "Error")
 
-@ApiApp.route('/api/v1/public/<ip>', methods=['POST'])
-def create_public(ip):
-    print("Create")
-    try: 
-        ControllerEvent().public_create(ip)
-        return jsonify(status=200,)
-    except Exception:
-        print(Exception)
-        return jsonify(status=400, message = "Error")
-
 # @ApiApp.route('/api/v1/public/<ip>', methods=['POST'])
 # def create_public(ip):
 #     print("Create")
@@ -82,20 +74,34 @@ def create_public(ip):
 #         print(Exception)
 #         return jsonify(status=400, message = "Error")
 
+@ApiApp.route('/api/v1/public/', methods=['POST'])
+def create_public():
+    print("Create")
+    try: 
+        public_id = ControllerEvent().public_create("t")
+        return jsonify(status=200, id = public_id)
+    except Exception:
+        print(Exception)
+        return jsonify(status=400, message = "Error")
+
+
 # GET API ======================================================================
 
 @ApiApp.route('/api/v1/public', methods=['GET'])
 def get_Public():
     try: 
-        response = ControllerEvent().get_Public().toJson()
-        return jsonify(status=200)
+        print("test")
+        response = ControllerModel().get_Public().toJSON()
+        print(response)
+        return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Error")
 
 @ApiApp.route('/api/v1/player', methods=['GET'])
 def get_PlayerList():
     try: 
-        response = ControllerEvent().get_PlayerList().toJson()
+        response = ControllerModel().get_PlayerList().toJSON()
+        print(response)
         return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Error")

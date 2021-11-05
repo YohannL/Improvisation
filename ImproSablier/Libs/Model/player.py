@@ -36,9 +36,10 @@ class Player():
         self.timeMax = timeMax
 
     def addTime(self, timeToAdd):
-        if((self.time + timeToAdd)>=0 and
-         (self.time + timeToAdd)<=self.timeMax):
-            self.time += timeToAdd
+        self.time += timeToAdd
+        # if((self.time + timeToAdd)>=0 and
+        #  (self.time + timeToAdd)<=self.timeMax):
+        #     self.time += timeToAdd
     
     def get_isPlaying(self):
         return self.isPlaying
