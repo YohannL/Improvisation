@@ -45,6 +45,9 @@ class Model():
     def get_PublicList(self):
         return self.PublicList.get_Publics()
 
+    def get_Public(self, id):
+        return self.PublicList.get_Public(id)
+
     def public_useTime(self, ip, player):
         return self.PublicList.use_Time(ip, player)
 

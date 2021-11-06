@@ -16,6 +16,9 @@ class PublicList():
     def get_Publics(self):
         return self.publics
 
+    def get_Public(self, id):
+        return self._get_Public(id)
+
     def use_Time(self,ip , player):
         enoughtTime = False
         for p in self.publics:

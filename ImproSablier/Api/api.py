@@ -91,7 +91,17 @@ def create_public():
 def get_Public():
     try: 
         print("test")
-        response = ControllerModel().get_Public().toJSON()
+        response = ControllerModel().get_Publics().toJSON()
+        print(response)
+        return jsonify(status=200, response = response)
+    except:
+        return jsonify(status=400, message = "Error")
+
+@ApiApp.route('/api/v1/public/<id>', methods=['GET'])
+def get_Public(id):
+    try: 
+        print("test")
+        response = ControllerModel().get_Public(id).toJSON()
         print(response)
         return jsonify(status=200, response = response)
     except:
