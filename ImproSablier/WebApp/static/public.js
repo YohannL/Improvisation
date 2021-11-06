@@ -1,7 +1,10 @@
 
 var API="http://192.168.1.34:5001/";
 var ID;
-
+var REDTIME;
+var BLUETIME;
+var GREENTIME;
+var YELLOWTIME;
 
 function connect(){
     isConnected = requestToApi_Connect();
@@ -24,38 +27,34 @@ function connect(){
 }
 
 function requestToApi_Connect(){
-    
-    var request = new XMLHttpRequest();
-    request.open('POST', API+"api/v1/public/", false);  // `false` makes the request synchronous
-    try{
-        request.send(null);
-    }catch(error){
+    // Verification if we can connect to the API and get the ID of the public
+    data = sendToApi('POST', API+"api/v1/public/", false)
+    if ( data == false )
         return false;
-    }
 
-    if (request.status === 200) {
-        const data = JSON.parse(request.responseText);
-        console.log(data.id);
-        ID = data.id;
-    }else{
-        return false;
-    }
+    ID = data.id;
     return true;
 }
 
 function redHandler(){
-    // useTime("RED");
-    response = getPlayerInfo();
-    console.log("Reponse",JSON.parse(response.response));
+    // Send time to RED player and get info the public
+    useTime("RED");
+    getPublicInfo();
 }
 function blueHandler(){
+    // Send time to BLUE player and get info the public
     useTime("BLUE");
+    getPublicInfo();
 }
 function greenHandler(){
+    // Send time to GREEN player and get info the public
     useTime("GREEN");
+    getPublicInfo();
 }
 function yellowHandler(){
+    // Send time to YELLOW player and get info the public
     useTime("YELLOW");
+    getPublicInfo();
 }
 
  
@@ -64,8 +63,9 @@ function useTime(color){
     return sendToApi('POST',API+"api/v1/public/"+ID+"/time/use/"+color);
 }
 
-function getPlayerInfo(){
-    return sendToApi('GET', API+"api/v1/player")
+function getPublicInfo(){
+    sendToApi('GET', API+"api/v1/public/"+ID)
+    //JSON.parse(response.response)
 }
 
 function sendToApi(method,url){
@@ -78,7 +78,6 @@ function sendToApi(method,url){
     }
 
     if (request.status === 200) {
-        console.log(200);
         return JSON.parse(request.responseText);
     }else{
         return false;
