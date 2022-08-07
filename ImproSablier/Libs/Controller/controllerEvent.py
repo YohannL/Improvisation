@@ -30,8 +30,8 @@ class ControllerEvent():
     def admin_reset(self):
         self._add_event(eventAdminReset())
 
-    def public_useTime(self,player):
-        self._add_event(eventPublicAddTime(player))
+    def public_useTime(self,id,player):
+        self._add_event(eventPublicAddTime(id,player))
 
     def public_create(self,ip):
         self._public_nb+=1

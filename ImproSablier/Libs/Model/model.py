@@ -49,7 +49,10 @@ class Model():
         return self.PublicList.get_Public(id)
 
     def public_useTime(self, ip, player):
-        return self.PublicList.use_Time(ip, player)
+        enoughTime = self.PublicList.use_Time(ip, player)
+        if(enoughTime):
+            self.PlayerList.add_Time(player, 10)
+        
 
 # admin 
     def admin_addTime(self, player):

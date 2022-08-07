@@ -11,6 +11,7 @@ function connect(){
     if ( isConnected == true){
         
         document.querySelector('#ButtonConnect').innerText = 'Connected';
+        // document.querySelector('#Row1').hei = 'Connected';
 
         const elRed = document.getElementById("Red");
         elRed.addEventListener("click", redHandler, false);
@@ -64,8 +65,20 @@ function useTime(color){
 }
 
 function getPublicInfo(){
-    sendToApi('GET', API+"api/v1/public/"+ID)
-    //JSON.parse(response.response)
+    response = sendToApi('GET', API+"api/v1/public/"+ID)
+    if(response.status === 200){
+        response= JSON.parse(response.response)
+        BLUETIME = response._ColorTimeList.BLUE
+        REDTIME = response._ColorTimeList.RED
+        YELLOWTIME = response._ColorTimeList.YELLOW
+        GREENTIME = response._ColorTimeList.GREEN
+        
+        document.querySelector('#Red').innerText = REDTIME;
+        document.querySelector('#Green').innerText = GREENTIME;
+        document.querySelector('#Blue').innerText = BLUETIME;
+        document.querySelector('#Yellow').innerText = YELLOWTIME;
+
+    }
 }
 
 function sendToApi(method,url){
@@ -83,9 +96,4 @@ function sendToApi(method,url){
         return false;
     }
     return request.responseText;
-}
-
-
-function loop(){
-    alert("loop");
 }

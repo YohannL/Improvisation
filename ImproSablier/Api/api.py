@@ -56,10 +56,10 @@ def admin_reset():
     except:
         return jsonify(status=400, message = "Error")
 
-@ApiApp.route('/api/v1/public/<ip>/time/use/<player>', methods=['POST'])
-def public_useTime(ip,player):
+@ApiApp.route('/api/v1/public/<id>/time/use/<player>', methods=['POST'])
+def public_useTime(id,player):
     try: 
-        ControllerEvent().public_useTime(ip,player)
+        ControllerEvent().public_useTime(int(id),player)
         return jsonify(status=200)
     except:
         return jsonify(status=400, message = "Error")
@@ -88,7 +88,7 @@ def create_public():
 # GET API ======================================================================
 
 @ApiApp.route('/api/v1/public', methods=['GET'])
-def get_Public():
+def get_Publics():
     try: 
         print("test")
         response = ControllerModel().get_Publics().toJSON()
@@ -101,7 +101,7 @@ def get_Public():
 def get_Public(id):
     try: 
         print("test")
-        response = ControllerModel().get_Public(id).toJSON()
+        response = ControllerModel().get_Public(int(id)).toJSON()
         print(response)
         return jsonify(status=200, response = response)
     except:

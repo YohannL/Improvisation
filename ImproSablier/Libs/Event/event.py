@@ -48,7 +48,7 @@ class eventPublicConnect(event):
 
 class eventPublicAddTime(event):
     def __init__(self, ip, player):
-        super().__init__(type= eventType.PUBLIC_USE_TIME,priority=eventPriority.EVENT_PRIORITY_PUBLIC)
+        super().__init__(type= eventType.PUBLIC_ADD_TIME,priority=eventPriority.EVENT_PRIORITY_PUBLIC)
         self._player = player 
         self._ip = ip
 
