@@ -6,5 +6,7 @@ from Libs.Model.enumeration import playerColor
 
 if __name__ == '__main__':
     controller = ControllerEvent()
-    controller.admin_changeStatus(statusType.STATUS_RUN_EVENT_LOOP)
+    # controller.admin_changeStatus(statusType.STATUS_RUN_EVENT_LOOP)
+    controller.admin_changeStatus(statusType.STATUS_RUN_BOTH)
+    
     ApiApp.run(host=ApiHost, port=ApiPort, debug=ApiDbg)
