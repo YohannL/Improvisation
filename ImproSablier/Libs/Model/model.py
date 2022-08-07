@@ -60,7 +60,7 @@ class Model():
         return True
 
     def admin_removeTime(self, player):
-        self.PlayerList.add_Time(player, -10)
+        self.PlayerList.add_Time(player, -1)
         return True
 
     def admin_toogleTimer(self, player):

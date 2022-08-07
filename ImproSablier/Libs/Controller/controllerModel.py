@@ -33,10 +33,16 @@ class ControllerModel():
 
 
     def admin_addTime(self, player):
-        return self.model.admin_addTime(player)
+        if(self.model.get_PlayerList().get_Player(player).time < self.model.get_PlayerList().get_Player(player).timeMax):
+            self.model.admin_addTime(player)
+            return True
+        return False
 
     def admin_removeTime(self, player):
-        return self.model.admin_removeTime(player)
+        if(self.model.get_PlayerList().get_Player(player).time > 0):
+            self.model.admin_removeTime(player)
+            return True
+        return False
 
     def admin_toogleTimer(self, player):
         return self.model.admin_toogleTimer(player)

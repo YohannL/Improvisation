@@ -6,7 +6,7 @@ class Player():
         self.color = color
         self.time = time
         self.timeMax = timeMax
-        self.isPlaying = False
+        self.isPlaying = True
 
     def get_time(self):
         return self.time
