@@ -1,9 +1,8 @@
 
 TODO : 
 
-    Ajouter un event handler
-    Ajouter les nouveaux type d'event
-    Ajouter un sort des event Priority Puis date
+    Améliorer le css
+    Ajouter une page admin
     Ajouter un état
     Ajouter des tests
 
@@ -12,6 +11,9 @@ DONE:
     Ajouter un event loop
     Ajouter un thread pour ajouter un event toutes les secondes
     Ajouter un API
+    Ajouter un sort des event Priority Puis date
+    Ajouter un event handler
+    Ajouter les nouveaux type d'event
 
 
     

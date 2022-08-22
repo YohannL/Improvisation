@@ -4,14 +4,17 @@ requirements : pip freeze > .\requirements.txt
 run the tests : python -m pytest
 
 
-
 run Api : 
 set FLASK_APP=main.py
-flask run --host 0.0.0.0 --port 5001
+flask run --host 0.0.0.0 --port 5000
 
 python main.py
 
+run WebApp Public: 
+set FLASK_APP=WebApp/public/main.py && flask run --host 0.0.0.0 --port 5001
 
-run WebApp : 
-set FLASK_APP=WebApp/main.py
-flask run --host 0.0.0.0 --port 5000
+run WebApp Admin: 
+set FLASK_APP=WebApp/admin/main.py && flask run --host 0.0.0.0 --port 6000
+
+run WebApp Monitor: 
+set FLASK_APP=WebApp/monitor/main.py && flask run --host 0.0.0.0 --port 5002
