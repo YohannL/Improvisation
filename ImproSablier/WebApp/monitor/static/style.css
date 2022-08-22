@@ -12,14 +12,7 @@
     margin: 0 auto;
     padding:0px;
 }
-.row1 {
-    height:10vh; /*set height*/
-    border:0px solid;
-    width:100%;
-    margin-bottom:0px;
-    padding:0px;
-}
-.row2 {
+.row {
     height:45vh; /*set height*/
     border:0px solid;
     width:100%;
@@ -76,22 +69,3 @@
     width:100%;
     height:100%;
   }
-
-  /* Copy this @keyframes block to your CSS*/
-@keyframes yourAnimation {
-        0.0%{
-        }
-        0.8%{
-            transform: rotate(10);
-        }
-        1.9%{
-            transform: rotate(20);
-        }
-    }
-    
-    
-    /* Add the animation: property to whichever element you want to animate */
-    #elementToAnimate{
-        animation: yourAnimation 1 ease 0s infinite normal none;
-    }
-}

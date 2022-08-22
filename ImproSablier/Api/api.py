@@ -5,7 +5,7 @@ from Libs.Controller.controllerModel import ControllerModel
  
 ApiApp = Flask(__name__)
 ApiDbg=True
-ApiPort=5001
+ApiPort=5000
 ApiHost='0.0.0.0'
 
 # STD API ROUT ==================================================================
