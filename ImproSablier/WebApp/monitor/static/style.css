@@ -13,7 +13,8 @@
     margin: auto auto;
     width: 100vw;
     height: 100vh;
-    display:flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 .colRed {
     border:0px solid red;  
