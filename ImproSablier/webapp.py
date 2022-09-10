@@ -12,7 +12,7 @@ def main(opt):
     assert not (opt.admin and opt.monitor)
     if opt.admin:
         os.environ["FLASK_APP"] = "WebApp/admin/main.py"
-        port = 6000
+        port = 5003        
     elif opt.monitor:
         os.environ["FLASK_APP"] = "WebApp/monitor/main.py"
         port = 5002

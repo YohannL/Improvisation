@@ -6,27 +6,78 @@
     <script src = "/static/public.js" type = "text/javascript"/></script>
 </head>
 <body>
-    <div class="container">
-        <div id="Row1" class="row1">
-            <div class="colConnect">
-                <p>
-                    <button id="ButtonConnect" class="buttonConnect" onclick = "connect()" type="button" value=""> 
-                        Click to connect
-                    </button> 
-                </p>
-            </div>
+    <div class="container1">
+        <p>
+            Nombre de personnes connectées:
+        </p>
+    </div>
+    <div class="container2">
+        <button id="Button" class="button" onclick = "start()" type="button" value="" color="#000055"> 
+            Start
+        </button>
+        <button id="Button" class="button" onclick = "pause()" type="button" value=""> 
+            Pause
+        </button>
+        <button id="Button" class="button" onclick = "reset()" type="button" value=""> 
+            Reset
+        </button>
+    </div>
+    <div class="container3">
+        <div id="Red" class="Red" >
+            <button id="Button" class="button" onclick = "onRed()" type="button" value=""> 
+                On
+            </button>
+            <button id="Button" class="button" onclick = "offRed()" type="button" value=""> 
+                Off
+            </button>
+            <button id="Button" class="button" onclick = "addRed()" type="button" value=""> 
+                Add
+            </button>
+            <button id="Button" class="button" onclick = "removeRed()" type="button" value=""> 
+                Remove
+            </button>
         </div>
-        <div class="row2">
-            <div id="Red" class="colRed" >
-            </div>
-            <div id="Green" class="colGreen">
-            </div>
+        <div id="Green" class="Green" >
+            <button id="Button" class="button" onclick = "onGreen()" type="button" value="" > 
+                On
+            </button>
+            <button id="Button" class="button" onclick = "offGreen()" type="button" value=""> 
+                Off
+            </button>
+            <button id="Button" class="button" onclick = "addGreen()" type="button" value=""> 
+                Add
+            </button>
+            <button id="Button" class="button" onclick = "removeGreen()" type="button" value=""> 
+                Remove
+            </button>
         </div>
-        <div class="row2">
-            <div id="Blue" class="colBlue">
-            </div>
-            <div id="Yellow" class="colYellow">
-            </div>
-        </div>  
+        <div id="Blue" class="Blue" >
+            <button id="Button" class="button" onclick = "onBlue()" type="button" value=""> 
+                On
+            </button>
+            <button id="Button" class="button" onclick = "offBlue()" type="button" value=""> 
+                Off
+            </button>
+            <button id="Button" class="button" onclick = "addBlue()" type="button" value=""> 
+                Add
+            </button>
+            <button id="Button" class="button" onclick = "removeBlue()" type="button" value=""> 
+                Remove
+            </button>
+        </div>
+        <div id="Yellow" class="Yellow" >
+            <button id="Button" class="button" onclick = "onYellow()" type="button" value=""> 
+                On
+            </button>
+            <button id="Button" class="button" onclick = "offYellow()" type="button" value=""> 
+                Off
+            </button>
+            <button id="Button" class="button" onclick = "addYellow()" type="button" value=""> 
+                Add
+            </button>
+            <button id="Button" class="button" onclick = "removeYellow()" type="button" value=""> 
+                Remove
+            </button>
+        </div>
     </div>
 </body>

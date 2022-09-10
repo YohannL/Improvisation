@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 WebApp=Flask(__name__)
 WebDbg=True
-WebPort=6000
+WebPort=5003
 WebHost='0.0.0.0'
 
 @WebApp.route('/')
