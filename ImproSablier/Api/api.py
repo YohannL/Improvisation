@@ -9,6 +9,10 @@ ApiPort=5000
 ApiHost='0.0.0.0'
 
 # STD API ROUT ==================================================================
+@ApiApp.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @ApiApp.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
