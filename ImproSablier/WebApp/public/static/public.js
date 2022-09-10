@@ -17,11 +17,18 @@ class player {
 };
 let playerList = [];
 
+
+window.onload = async function(){
+    connect();
+}
+
 function connect(){
     isConnected = requestToApi_Connect();
+    
+    console.log("connected ",isConnected );
     if ( isConnected == true){
         
-        document.querySelector('#ButtonConnect').innerText = 'Connected';
+        // document.querySelector('#ButtonConnect').innerText = 'Connected';
         // document.querySelector('#Row1').hei = 'Connected';
 
         const elRed = document.getElementById("Red");
@@ -47,8 +54,8 @@ function sleep(ms) {
 
 async function loop() {
     while(true){ //add a better confition
-        // getPublicInfo();
-        getPlayerInfo();
+         getPublicInfo();
+        //getPlayerInfo();
         await sleep(1000);
     }
 }

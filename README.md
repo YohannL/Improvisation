@@ -25,7 +25,7 @@ First launch the API, then the webapp. Use the `--admin` and `--monitor` flags t
 # Launch API
 python main.py
 
-# Launch the webapp
+# Launch the webapp in public mode 
 python webapp.py
 
 # Launch the webapp in admin mode
