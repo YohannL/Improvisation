@@ -13,6 +13,7 @@ class player {
 let playerList = [];
 
 window.onload = async function(){
+    document.documentElement.requestFullscreen()
     loop();
 }
 
