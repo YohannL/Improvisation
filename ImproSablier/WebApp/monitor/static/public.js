@@ -41,8 +41,8 @@ async function getPlayerInfo(){
         playerList.push(new player(response.playerList[2].color, response.playerList[2].isPlaying, response.playerList[2].time, response.playerList[2].timeMax))
         playerList.push(new player(response.playerList[3].color, response.playerList[3].isPlaying, response.playerList[3].time, response.playerList[3].timeMax))
         document.querySelector('#Red').innerText = playerList[0].time;
-        document.querySelector('#Green').innerText = playerList[1].time;
-        document.querySelector('#Blue').innerText = playerList[2].time;
+        document.querySelector('#Blue').innerText = playerList[1].time;
+        document.querySelector('#Green').innerText = playerList[2].time;
         document.querySelector('#Yellow').innerText = playerList[3].time;
         console.log(playerList)
 
