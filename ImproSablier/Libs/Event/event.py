@@ -62,7 +62,6 @@ class eventPublicAddTime(event):
 
 class eventAdminChangeStatus(event):
     def __init__(self, status):
-        print("eventAdminChangeStatus")
         super().__init__(type= eventType.ADMIN_CHANGE_STATUS,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._status = status 
 
@@ -71,7 +70,6 @@ class eventAdminChangeStatus(event):
 
 class eventAdminAddTime(event):
     def __init__(self, player):
-        print("eventAdminAddTime")
         super().__init__(type= eventType.ADMIN_ADD_TIME,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._player = player 
 
@@ -80,7 +78,6 @@ class eventAdminAddTime(event):
         
 class eventGameAddTime(event):
     def __init__(self, player):
-        print("eventGameAddTime")
         super().__init__(type= eventType.GAME_ADD_TIME,priority=eventPriority.EVENT_PRIORITY_GAME)
         self._player = player 
 
@@ -89,7 +86,6 @@ class eventGameAddTime(event):
         
 class eventAdminRemoveTime(event):
     def __init__(self, player):
-        print("eventAdminRemoveTime")
         super().__init__(type= eventType.ADMIN_REMOVE_TIME,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._player = player 
 
@@ -98,7 +94,6 @@ class eventAdminRemoveTime(event):
         
 class eventAdminStartTimer(event):
     def __init__(self, player, isPlaying):
-        print("eventAdminStartTimer")
         super().__init__(type= eventType.ADMIN_TIMER_PLAY_STATUS,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._player = player 
         self._isPlaying = isPlaying 
@@ -112,11 +107,9 @@ class eventAdminStartTimer(event):
 class eventAdminReset(event):
     def __init__(self):
         super().__init__(type= eventType.ADMIN_RESET,priority=eventPriority.EVENT_PRIORITY_ADMIN)
-        print("eventAdminReset")
 
 class eventTest(event):
     def __init__(self):
-        print("eventTest")
         super().__init__(type= eventType.TEST_EVENT , priority= eventPriority.EVENT_PRIORITY_PUBLIC)
 
 

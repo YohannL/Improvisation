@@ -90,7 +90,6 @@ def public_useTime(id,player):
 
 @ApiApp.route('/api/v1/public/', methods=['POST'])
 def create_public():
-    print("Create")
     try: 
         public_id = ControllerEvent().public_create("t")
         return jsonify(status=200, id = public_id)
@@ -104,7 +103,6 @@ def create_public():
 @ApiApp.route('/api/v1/public', methods=['GET'])
 def get_Publics():
     try: 
-        print("test")
         response = ControllerModel().get_Publics().toJSON()
         return jsonify(status=200, response = response)
     except:
@@ -113,9 +111,7 @@ def get_Publics():
 @ApiApp.route('/api/v1/public/<id>', methods=['GET'])
 def get_Public(id):
     try: 
-        print("test")
         response = ControllerModel().get_Public(int(id)).toJSON()
-        print(response)
         return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Error")

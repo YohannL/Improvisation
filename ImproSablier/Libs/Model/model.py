@@ -8,7 +8,6 @@ from Libs.Model.enumeration import playerColor
 
 class Model():
     def __init__(self):
-        print("Model : Init")
         self.playerTimeMax = 120
         self.PublicList = PublicList()
         self.PlayerList = PlayerList(self.playerTimeMax)

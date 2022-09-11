@@ -8,7 +8,6 @@ class ControllerEvent():
     _public_nb = 0
     def __new__(cls):
         if cls._instance is None:
-            print('Creating the ControllerEvent')
             cls._instance = super(ControllerEvent, cls).__new__(cls)
             timerLoop()
             eventLoop()
@@ -56,7 +55,6 @@ class ControllerEvent():
             timerLoop().stop()
             eventLoop().stop()
             
-        print("admin_changeStatus")
 
     def _add_event(self, event):
         eventLoop().addEvent(event)

@@ -29,7 +29,6 @@ class timerLoop(Looper):
         playerColor.PLAYER_GREEN, 
         playerColor.PLAYER_YELLOW]
 
-        print("timerLoop : task")
         while(status != statusType.STATUS_STOP):
             if( status == statusType.STATUS_RUN):
                 for color in colorList:

@@ -6,7 +6,6 @@ class ControllerModel():
 
     def __new__(cls):
         if cls._instance is None:
-            print('Creating the ControllerModel')
             cls._instance = super(ControllerModel, cls).__new__(cls)
             cls._instance.model = Model()
             cls._instance.view = View()
@@ -39,20 +38,16 @@ class ControllerModel():
         return False
 
     def admin_removeTime(self, player):
-        print("admin_removeTime")
         if(self.model.get_PlayerList().get_Player(player).time > 0):
             self.model.admin_removeTime(player)
             return True
         return False
 
     def admin_changeStatusPlayer(self, player, status):
-        print("admin_removeTime")
         return self.model.admin_changeStatusPlayer(player, status)
 
     def admin_reset(self):
-        print("admin_reset")
         self.model.admin_reset()
-        print("admin_reset")
 
     def get_Public(self, id):
         return self.model.get_Public(id)
