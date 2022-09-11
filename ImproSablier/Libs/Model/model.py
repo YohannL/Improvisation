@@ -58,6 +58,11 @@ class Model():
     def admin_addTime(self, player):
         self.PlayerList.add_Time(player, 10)
         return True
+    
+    def admin_reset(self):
+        self.PlayerList.reset()
+        self.PublicList.reset()
+        return True
 
     def admin_removeTime(self, player):
         self.PlayerList.add_Time(player, -1)

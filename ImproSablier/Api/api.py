@@ -20,9 +20,10 @@ def get_my_ip():
 
 # POST API ======================================================================
 
-@ApiApp.route('/api/v1/admin/<status>', methods=['POST'])
+@ApiApp.route('/api/v1/admin/status/<status>', methods=['POST'])
 def admin_changeStatus(status):
     try: 
+        
         response = ControllerEvent().admin_changeStatus(status)
         return jsonify(status=200)
     except:
@@ -63,6 +64,7 @@ def admin_playerIsNotPlaying(player):
 @ApiApp.route('/api/v1/admin/reset', methods=['POST'])
 def admin_reset():
     try: 
+        ControllerEvent().admin_changeStatus('PAUSE')
         response = ControllerEvent().admin_reset()
         return jsonify(status=200)
     except:

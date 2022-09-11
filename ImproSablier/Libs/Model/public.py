@@ -18,9 +18,9 @@ class Public:
     def get_Ip(self):
         return self._ip
 
-    def reset(self, newTime):
+    def reset(self):
         for key in self._ColorTimeList:
-            self._ColorTimeList[key] = newTime
+            self._ColorTimeList[key] = self._timeInit
 
     def use_Time(self, colorKey, timeToDescrease):
         if(colorKey in self._ColorTimeList):

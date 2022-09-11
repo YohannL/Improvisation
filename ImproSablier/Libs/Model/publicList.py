@@ -26,6 +26,10 @@ class PublicList():
                 enoughtTime=p.use_Time(player, self.publicStdTime)
         return enoughtTime
 
+    def reset(self):
+        for p in self.publics:  
+            p.reset()            
+            
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, 
         sort_keys=True, indent=4)

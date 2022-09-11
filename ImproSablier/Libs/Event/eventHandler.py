@@ -49,9 +49,8 @@ class eventHandler():
         ControllerModel().admin_removeTime(eventToHandle.getPlayer())
 
     def _handle_adminChangeStatusPlayer(self,eventToHandle: event):
-        print("admin_changeStatusPlayer")
+        print("_handle_changeStatusPlayer")
         ControllerModel().admin_changeStatusPlayer(eventToHandle.getPlayer(), eventToHandle.getIsPlaying())
-
 
     def _handle_adminReset(self,eventToHandle: event):
         print("_handle_adminReset")

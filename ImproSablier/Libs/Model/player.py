@@ -34,6 +34,7 @@ class Player():
     def reset(self, timeMax):
         self.time = timeMax
         self.timeMax = timeMax
+        self.isPlaying = False
 
     def addTime(self, timeToAdd):
         self.time += timeToAdd

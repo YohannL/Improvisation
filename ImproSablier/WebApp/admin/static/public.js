@@ -12,15 +12,15 @@ async function getPlayerInfo(){
 */
 
 async function start(){
-    response = sendToApi('POST', API+"api/v1/admin/RUN", false)
+    response = sendToApi('POST', API+"api/v1/admin/status/RUN", false)
 }
 
 async function pause(){
-    response = sendToApi('POST', API+"api/v1/admin/PAUSE", false)
+    response = sendToApi('POST', API+"api/v1/admin/status/PAUSE", false)
 }
 
 async function reset(){
-    response = sendToApi('POST', API+"api/v1/admin/RESET", false)
+    response = sendToApi('POST', API+"api/v1/admin/reset", false)
 }
 
 async function onRed(){

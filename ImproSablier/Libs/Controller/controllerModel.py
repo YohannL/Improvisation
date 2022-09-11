@@ -51,6 +51,8 @@ class ControllerModel():
 
     def admin_reset(self):
         print("admin_reset")
+        self.model.admin_reset()
+        print("admin_reset")
 
     def get_Public(self, id):
         return self.model.get_Public(id)

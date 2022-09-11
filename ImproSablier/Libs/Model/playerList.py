@@ -34,7 +34,7 @@ class PlayerList():
     
     def reset(self):
         for p in self.playerList:
-            p.reset()
+            p.reset(self.playerTimeMax)
 
     # Private function 
     def _get_Player(self, color):

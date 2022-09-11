@@ -42,7 +42,7 @@ class ControllerEvent():
         #Update controller model        
         if(status == statusType.STATUS_PAUSE):
             timerLoop().pause()
-            eventLoop().pause()
+            #eventLoop().pause()
         elif(status == statusType.STATUS_RUN):
             if(not timerLoop().isRunning()):
                 timerLoop().run()
