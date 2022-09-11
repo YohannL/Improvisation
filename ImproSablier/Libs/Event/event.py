@@ -8,8 +8,8 @@ class eventType(Enum):
     ADMIN_CHANGE_STATUS = 10 # Change status of the game
     ADMIN_ADD_TIME = 11 # Add Time to player
     ADMIN_REMOVE_TIME = 12 # Remove Time to player
-    ADMIN_START_TIMER = 12 # Start Time for a player
-    ADMIN_RESET = 13 # Start Time for a player
+    ADMIN_TIMER_PLAY_STATUS = 16 # Start or Pause Time for a player
+    ADMIN_RESET = 14 # Start Time for a player
     GAME_ADD_TIME = 20 # Start Time for a player
 
 class eventPriority(Enum):
@@ -36,7 +36,9 @@ class event():
 
     def getPlayer(self):
         pass
-
+    
+    def getIsPlaying(self):
+        pass
 
 class eventPublicConnect(event):
     def __init__(self, ip):
@@ -84,6 +86,7 @@ class eventGameAddTime(event):
         
 class eventAdminRemoveTime(event):
     def __init__(self, player):
+        print("eventAdminRemoveTime")
         super().__init__(type= eventType.ADMIN_REMOVE_TIME,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._player = player 
 
@@ -91,12 +94,17 @@ class eventAdminRemoveTime(event):
         return self._player
         
 class eventAdminStartTimer(event):
-    def __init__(self, player):
-        super().__init__(type= eventType.ADMIN_START_TIMER,priority=eventPriority.EVENT_PRIORITY_ADMIN)
+    def __init__(self, player, isPlaying):
+        print("eventAdminStartTimer")
+        super().__init__(type= eventType.ADMIN_TIMER_PLAY_STATUS,priority=eventPriority.EVENT_PRIORITY_ADMIN)
         self._player = player 
+        self._isPlaying = isPlaying 
 
     def getPlayer(self):
         return self._player
+
+    def getIsPlaying(self):
+        return self._isPlaying
         
 class eventAdminReset(event):
     def __init__(self):

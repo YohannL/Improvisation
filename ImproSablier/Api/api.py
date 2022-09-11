@@ -44,10 +44,18 @@ def admin_removeTime(player):
     except:
         return jsonify(status=400, message = "Error")
 
-@ApiApp.route('/api/v1/admin/timer/start/<player>', methods=['POST'])
-def admin_startTimer(player):
+@ApiApp.route('/api/v1/admin/timer/on/<player>', methods=['POST'])
+def admin_playerIsPlaying(player):
     try: 
-        response = ControllerEvent().admin_toogleTimer(player)
+        response = ControllerEvent().admin_changeStatusPlayer(player, True)
+        return jsonify(status=200)
+    except:
+        return jsonify(status=400, message = "Error")
+    
+@ApiApp.route('/api/v1/admin/timer/off/<player>', methods=['POST'])
+def admin_playerIsNotPlaying(player):
+    try: 
+        response = ControllerEvent().admin_changeStatusPlayer(player, False)
         return jsonify(status=200)
     except:
         return jsonify(status=400, message = "Error")
@@ -96,7 +104,6 @@ def get_Publics():
     try: 
         print("test")
         response = ControllerModel().get_Publics().toJSON()
-        print(response)
         return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Error")
@@ -115,7 +122,6 @@ def get_Public(id):
 def get_PlayerList():
     try: 
         response = ControllerModel().get_PlayerList().toJSON()
-        print(response)
         return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Error")

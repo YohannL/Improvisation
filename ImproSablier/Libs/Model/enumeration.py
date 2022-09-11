@@ -1,11 +1,10 @@
 
 class statusType():
-    STATUS_INIT = 0 # First Time connection
-    STATUS_RUN = 1 # First Time connection
-    STATUS_RUN_BOTH = 2 # First Time connection
-    STATUS_RUN_EVENT_LOOP = 3 # First Time connection
-    STATUS_PAUSE = 4
-    STATUS_STOP = 5
+    STATUS_INIT = "INIT" # First Time connection
+    STATUS_RUN = "RUN" # First Time connection
+    STATUS_PAUSE = "PAUSE"
+    STATUS_RESET = "RESET"
+    STATUS_STOP = "STOP"
 
 
 class playerColor():

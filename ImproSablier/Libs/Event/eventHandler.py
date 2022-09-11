@@ -6,8 +6,9 @@ from .event import event,eventType
 class eventHandler():
 
     def handle(self, eventToHandle: event ):
-        # print("Id of event in the loop : "+str(eventToHandle.getId()) + "; Priotiry : " + str(eventToHandle.getPriority() ) )
-        # print("Type(object) " + str(type(eventToHandle)))
+        print("Id of event in the loop : "+str(eventToHandle.getId()) + "; Priotiry : " + str(eventToHandle.getPriority() ) )
+        print("Type(object) " + str(type(eventToHandle)))
+        print("getEventType " + str(eventToHandle.getEventType()))
         handleFunction = self._handle_switchFunctionHandler(eventToHandle)
         if handleFunction is not None:
             handleFunction(eventToHandle)
@@ -20,7 +21,7 @@ class eventHandler():
             eventType.PUBLIC_ADD_TIME:self._handle_publicUseTime,
             eventType.ADMIN_CHANGE_STATUS:self._handle_adminChangeStatus,
             eventType.ADMIN_ADD_TIME:self._handle_adminAddTime,
-            eventType.ADMIN_START_TIMER:self._handle_adminToogleTimer,
+            eventType.ADMIN_TIMER_PLAY_STATUS:self._handle_adminChangeStatusPlayer,
             eventType.ADMIN_RESET:self._handle_adminReset,
             eventType.ADMIN_REMOVE_TIME:self._handle_adminRemoveTime,
             eventType.GAME_ADD_TIME:self._handle_adminAddTime
@@ -47,9 +48,10 @@ class eventHandler():
         print("_handle_adminRemoveTime")
         ControllerModel().admin_removeTime(eventToHandle.getPlayer())
 
-    def _handle_adminToogleTimer(self,eventToHandle: event):
-        print("admin_toogleTimer")
-        ControllerModel().admin_toogleTimer(eventToHandle.getPlayer())
+    def _handle_adminChangeStatusPlayer(self,eventToHandle: event):
+        print("admin_changeStatusPlayer")
+        ControllerModel().admin_changeStatusPlayer(eventToHandle.getPlayer(), eventToHandle.getIsPlaying())
+
 
     def _handle_adminReset(self,eventToHandle: event):
         print("_handle_adminReset")

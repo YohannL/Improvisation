@@ -23,11 +23,8 @@ class PlayerList():
     def add_Time(self, color, time):
         self._get_Player(color).addTime(time)
 
-    def admin_toogleTimer(self, color):
-        if(self._get_Player(color).get_isPlaying() == False):
-            self._get_Player(color).set_isPlaying(True)
-        else:
-            self._get_Player(color).set_isPlaying(False)
+    def admin_changeStatusPlayer(self, color, isPlaying):
+        self._get_Player(color).set_isPlaying(isPlaying)
     
     def get_Players(self):
         return self.playerList

@@ -12,9 +12,9 @@ class ControllerEvent():
             cls._instance = super(ControllerEvent, cls).__new__(cls)
             timerLoop()
             eventLoop()
-            cls._status = statusType.STATUS_RUN_EVENT_LOOP
+            cls._status = statusType.STATUS_RUN
             eventLoop().run()
-            timerLoop().pause()
+            timerLoop().run()
             # Put any initialization here.
         return cls._instance
 
@@ -24,8 +24,8 @@ class ControllerEvent():
     def admin_removeTime(self,player):
         self._add_event(eventAdminRemoveTime(player))
 
-    def admin_toogleTimer(self,player):
-        self._add_event(eventAdminStartTimer(player))
+    def admin_changeStatusPlayer(self,player, isPlaying):
+        self._add_event(eventAdminStartTimer(player, isPlaying))
 
     def admin_reset(self):
         self._add_event(eventAdminReset())
@@ -39,19 +39,19 @@ class ControllerEvent():
         return self._public_nb
 
     def admin_changeStatus(self, status):
-        #Update controller model
+        #Update controller model        
         if(status == statusType.STATUS_PAUSE):
             timerLoop().pause()
             eventLoop().pause()
-        elif(status == statusType.STATUS_RUN_BOTH):
+        elif(status == statusType.STATUS_RUN):
             if(not timerLoop().isRunning()):
                 timerLoop().run()
             if(not eventLoop().isRunning()):
                 eventLoop().run()
-        elif(status == statusType.STATUS_RUN_EVENT_LOOP):
-            if(not eventLoop().isRunning()):
-                eventLoop().run()
+        elif(status == statusType.STATUS_RESET):
             timerLoop().pause()
+            eventLoop().pause()
+            # CALL RESET
         else:
             timerLoop().stop()
             eventLoop().stop()

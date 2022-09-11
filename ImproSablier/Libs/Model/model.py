@@ -63,8 +63,8 @@ class Model():
         self.PlayerList.add_Time(player, -1)
         return True
 
-    def admin_toogleTimer(self, player):
-        self.PlayerList.admin_toogleTimer(player)
+    def admin_changeStatusPlayer(self, player, isPlaying):
+        self.PlayerList.admin_changeStatusPlayer(player, isPlaying)
         return True
 
 # Not Accessible 

@@ -39,13 +39,15 @@ class ControllerModel():
         return False
 
     def admin_removeTime(self, player):
+        print("admin_removeTime")
         if(self.model.get_PlayerList().get_Player(player).time > 0):
             self.model.admin_removeTime(player)
             return True
         return False
 
-    def admin_toogleTimer(self, player):
-        return self.model.admin_toogleTimer(player)
+    def admin_changeStatusPlayer(self, player, status):
+        print("admin_removeTime")
+        return self.model.admin_changeStatusPlayer(player, status)
 
     def admin_reset(self):
         print("admin_reset")
