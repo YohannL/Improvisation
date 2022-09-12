@@ -23,10 +23,8 @@ class Player():
     def set_timeMax(self, timeMax):
         self.timeMax = timeMax
 
-    def isTimeAddable(self):
-        if (self.timeMax == 0 ):
-            return True # We are in demo Mode, so no limit to add time
-        elif (self.time < self.timeMax):
+    def isTimeAddable(self, timeToAdd):
+        if (self.time + timeToAdd < self.timeMax):
             return True # Player time is not at the max
         else:
             return False # Player is at the max

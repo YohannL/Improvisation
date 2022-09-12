@@ -19,12 +19,24 @@ class PublicList():
     def get_Public(self, id):
         return self._get_Public(id)
 
-    def use_Time(self,ip , player):
+    def has_Time(self,ip , player):
         enoughtTime = False
         for p in self.publics:
             if (p.get_Ip() == ip):
-                enoughtTime=p.use_Time(player, self.publicStdTime)
+                enoughtTime=p.has_Time(player)
         return enoughtTime
+    
+    def howMuch_Time(self,ip , player):
+        enoughtTime = False
+        for p in self.publics:
+            if (p.get_Ip() == ip):
+                enoughtTime=p.howMuch_Time(player, self.publicStdTime)
+        return enoughtTime
+    
+    def use_Time(self,ip , player):
+        for p in self.publics:
+            if (p.get_Ip() == ip):
+                return p.use_Time(player, self.publicStdTime)
 
     def reset(self):
         for p in self.publics:  

@@ -9,11 +9,10 @@ from Libs.Model.enumeration import playerColor
 class Model():
     def __init__(self):
         self.playerTimeMax = 120
+        self.publicTimeMax = 120
         self.PublicList = PublicList()
         self.PlayerList = PlayerList(self.playerTimeMax)
         self.status = statusType.STATUS_INIT
-        self.playerTimeMax = 120
-        self.publicTimeMax = 120
 
         #hardcoded init
 
@@ -48,9 +47,16 @@ class Model():
         return self.PublicList.get_Public(id)
 
     def public_useTime(self, ip, player):
-        enoughTime = self.PublicList.use_Time(ip, player)
-        if(enoughTime):
-            self.PlayerList.add_Time(player, 10)
+        hasTimePublic  = self.PublicList.has_Time(ip, player)
+        howMuchPublic  = self.PublicList.howMuch_Time(ip, player)
+        if(hasTimePublic):
+            # If the player has no time, we can't add it to player.
+            canAddTimePlayer  = self.PlayerList.can_Add_Time(player, howMuchPublic)
+        else:
+            canAddTimePlayer = False
+        if(hasTimePublic and canAddTimePlayer):
+            timeToAdd = self.PublicList.use_Time(ip, player)
+            self.PlayerList.add_Time(player, timeToAdd)
         
 
 # admin 
@@ -64,7 +70,7 @@ class Model():
         return True
 
     def admin_removeTime(self, player):
-        self.PlayerList.add_Time(player, -1)
+        self.PlayerList.remove_Time(player, -1)
         return True
 
     def admin_changeStatusPlayer(self, player, isPlaying):

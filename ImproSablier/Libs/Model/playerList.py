@@ -21,7 +21,15 @@ class PlayerList():
         self._get_Player(color).set_isPlaying(False)
 
     def add_Time(self, color, time):
+        if(self._get_Player(color).isTimeAddable(time)):
+            self._get_Player(color).addTime(time)
+            
+    def remove_Time(self, color, time):
         self._get_Player(color).addTime(time)
+            
+    def can_Add_Time(self, color, timeToAdd):
+        return self._get_Player(color).isTimeAddable(timeToAdd)
+           
 
     def admin_changeStatusPlayer(self, color, isPlaying):
         self._get_Player(color).set_isPlaying(isPlaying)
