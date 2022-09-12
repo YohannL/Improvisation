@@ -1,26 +1,47 @@
 
 var API="http://192.168.1.34:5000/";
 var LOOP= true;
-/*
-async function getPlayerInfo(){
-    response = sendToApi('GET', API+"api/v1/player", false)
-    if(response.status === 200){
 
+let loopCond = true
+
+window.onload = async function(){
+    loop();
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function loop() {
+    while(true){ //add a better confition
+        if(loopCond){
+            getPublicSize()
+            await sleep(500)
+        }else{
+            await sleep(1000)
+        }
     }
 }
 
-*/
+async function getPublicSize(){
+    response = sendToApi('GET', API+"api/v1/admin/publicsize", false)    
+    newTxt= [ 'Nombre de personnes connectées: ', JSON.parse(response.response)]
+    document.querySelector('#Public_Size').innerText = "".concat(...newTxt);
+}
 
 async function start(){
     response = sendToApi('POST', API+"api/v1/admin/status/RUN", false)
+    loopCond = false
 }
 
 async function pause(){
     response = sendToApi('POST', API+"api/v1/admin/status/PAUSE", false)
+    loopCond = true
 }
 
 async function reset(){
     response = sendToApi('POST', API+"api/v1/admin/reset", false)
+    loopCond = true
 }
 
 async function onRed(){

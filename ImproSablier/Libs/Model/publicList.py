@@ -8,10 +8,15 @@ class PublicList():
         self.publics = []
         self.publicTimeMax = 120 # to add 
         self.publicStdTime = 10 # to add 
+        self.mightyTimeMax = 3600
 
     def create_Public(self, ip):
         if (self._get_Public(ip) == None):
-            self.publics.append(Public(self.publicTimeMax, ip))
+            self.publics.append(Public(int(self.mightyTimeMax / (len(self.publics)+1)), ip))
+            
+        for p in self.publics:
+            p.set_TimeInit(int(self.mightyTimeMax / (len(self.publics))))
+            p.reset()
 
     def get_Publics(self):
         return self.publics

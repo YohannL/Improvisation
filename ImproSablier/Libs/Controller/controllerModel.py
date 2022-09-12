@@ -51,6 +51,9 @@ class ControllerModel():
 
     def get_Public(self, id):
         return self.model.get_Public(id)
+    
+    def get_PublicSize(self, ):
+        return self.model.get_PublicSize()
 
     def get_PlayerList(self):
         return self.model.get_PlayerList()

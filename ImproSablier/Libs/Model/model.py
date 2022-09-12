@@ -42,6 +42,9 @@ class Model():
 
     def get_PublicList(self):
         return self.PublicList.get_Publics()
+    
+    def get_PublicSize(self):
+        return len(self.PublicList.get_Publics())
 
     def get_Public(self, id):
         return self.PublicList.get_Public(id)

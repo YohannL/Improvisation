@@ -18,6 +18,9 @@ class Public:
     def get_Ip(self):
         return self._ip
 
+    def set_TimeInit(self, time):
+        self._timeInit = time
+
     def reset(self):
         for key in self._ColorTimeList:
             self._ColorTimeList[key] = self._timeInit

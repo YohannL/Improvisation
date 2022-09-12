@@ -124,5 +124,14 @@ def get_PlayerList():
     except:
         return jsonify(status=400, message = "Error")
 
+
+@ApiApp.route('/api/v1/admin/publicsize', methods=['GET'])
+def admin_size():
+    try: 
+        response = ControllerModel().get_PublicSize()
+        return jsonify(status=200, response = response)
+    except:
+        return jsonify(status=400, message = "Errora")
+
 if __name__ == '__main__':
     ApiApp.run(host=ApiHost, port=ApiPort, debug=ApiDbg)
