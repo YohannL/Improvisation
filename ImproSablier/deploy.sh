@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Change target IP:
+git stash 
+sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/admin/static/public.js
+sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/public/static/public.js
+sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/monitor/static/public.js
+
+
 # We will wipe all the screen and redeploy them
 # Clean
 
