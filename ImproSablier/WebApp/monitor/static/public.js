@@ -29,6 +29,16 @@ async function loop() {
     }
 }
 
+function formatTime(time){
+    var formattedTime;
+    if(time % 60 < 10){
+        formattedTime = [Math.floor(time/60).toString(), ':', '0', (time % 60).toString()];
+    }else{
+        formattedTime = [Math.floor(time/60).toString(), ':', (time % 60).toString()];
+    }
+    return "".concat(...formattedTime);
+}
+
 async function getPlayerInfo(){
     response = sendToApi('GET', API+"api/v1/player", false)
     if(response.status === 200){
@@ -40,10 +50,12 @@ async function getPlayerInfo(){
         playerList.push(new player(response.playerList[1].color, response.playerList[1].isPlaying, response.playerList[1].time, response.playerList[1].timeMax))
         playerList.push(new player(response.playerList[2].color, response.playerList[2].isPlaying, response.playerList[2].time, response.playerList[2].timeMax))
         playerList.push(new player(response.playerList[3].color, response.playerList[3].isPlaying, response.playerList[3].time, response.playerList[3].timeMax))
-        document.querySelector('#Red').innerText = playerList[0].time;
-        document.querySelector('#Blue').innerText = playerList[1].time;
-        document.querySelector('#Green').innerText = playerList[2].time;
-        document.querySelector('#Yellow').innerText = playerList[3].time;
+        // document.querySelector('#Red').innerText = playerList[0].time;
+        
+        document.querySelector('#Red').innerText = formatTime(playerList[0].time); 
+        document.querySelector('#Blue').innerText = formatTime(playerList[1].time); 
+        document.querySelector('#Green').innerText = formatTime(playerList[2].time); 
+        document.querySelector('#Yellow').innerText = formatTime(playerList[3].time); 
         console.log(playerList)
 
         // give to a manager

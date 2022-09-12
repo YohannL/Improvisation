@@ -101,6 +101,16 @@ function useTime(color){
     return sendToApi('POST',API+"api/v1/public/"+ID+"/time/use/"+color);
 }
 
+function formatTime(time){
+    var formattedTime;
+    if(time % 60 < 10){
+        formattedTime = [Math.floor(time/60).toString(), ':', '0', (time % 60).toString()];
+    }else{
+        formattedTime = [Math.floor(time/60).toString(), ':', (time % 60).toString()];
+    }
+    return "".concat(...formattedTime);
+}
+
 function getPublicInfo(){
     response = sendToApi('GET', API+"api/v1/public/"+ID)
     if(response.status === 200){
@@ -109,10 +119,10 @@ function getPublicInfo(){
         PUBLIC_REDTIME_TOADD = response._ColorTimeList.RED
         PUBLIC_YELLOWTIME_TOADD = response._ColorTimeList.YELLOW
         PUBLIC_GREENTIME_TOADD = response._ColorTimeList.GREEN
-        document.querySelector('#Red').innerText = PUBLIC_REDTIME_TOADD;
-        document.querySelector('#Green').innerText = PUBLIC_GREENTIME_TOADD;
-        document.querySelector('#Blue').innerText = PUBLIC_BLUETIME_TOADD;
-        document.querySelector('#Yellow').innerText = PUBLIC_YELLOWTIME_TOADD;
+        document.querySelector('#Red').innerText = formatTime(PUBLIC_REDTIME_TOADD);
+        document.querySelector('#Green').innerText = formatTime(PUBLIC_GREENTIME_TOADD);
+        document.querySelector('#Blue').innerText = formatTime(PUBLIC_BLUETIME_TOADD);
+        document.querySelector('#Yellow').innerText = formatTime(PUBLIC_YELLOWTIME_TOADD);
 
     }
 }
