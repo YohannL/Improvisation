@@ -63,7 +63,8 @@ async function loop() {
 function requestToApi_Connect(){
     // Verification if we can connect to the API and get the ID of the public
     data = sendToApi('POST', API+"api/v1/public/", false)
-    if ( data == false )
+    console.log(data.status)
+    if ( data.status == 503 )
         return false;
 
     ID = data.id;

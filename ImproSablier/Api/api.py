@@ -92,7 +92,10 @@ def public_useTime(id,player):
 def create_public():
     try: 
         public_id = ControllerEvent().public_create("t")
-        return jsonify(status=200, id = public_id)
+        if(public_id>=0):
+            return jsonify(status=200, id = public_id)
+        else:
+            return jsonify(status=503, message = "Error")
     except Exception:
         print(Exception)
         return jsonify(status=400, message = "Error")

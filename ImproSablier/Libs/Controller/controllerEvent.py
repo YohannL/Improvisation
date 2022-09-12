@@ -11,7 +11,7 @@ class ControllerEvent():
             cls._instance = super(ControllerEvent, cls).__new__(cls)
             timerLoop()
             eventLoop()
-            cls._status = statusType.STATUS_RUN
+            cls._status = statusType.STATUS_PAUSE
             eventLoop().run()
             timerLoop().run()
             # Put any initialization here.
@@ -33,21 +33,25 @@ class ControllerEvent():
         self._add_event(eventPublicAddTime(id,player))
 
     def public_create(self,ip):
-        self._public_nb+=1
-        self._add_event(eventPublicConnect( self._public_nb))
-        return self._public_nb
+        if(self._status != statusType.STATUS_RUN):
+            self._public_nb+=1
+            self._add_event(eventPublicConnect( self._public_nb))
+            return self._public_nb
+        else:
+            return -1
 
     def admin_changeStatus(self, status):
         #Update controller model        
-        if(status == statusType.STATUS_PAUSE):
+        self._status = status
+        if(self._status == statusType.STATUS_PAUSE):
             timerLoop().pause()
             #eventLoop().pause()
-        elif(status == statusType.STATUS_RUN):
+        elif(self._status == statusType.STATUS_RUN):
             if(not timerLoop().isRunning()):
                 timerLoop().run()
             if(not eventLoop().isRunning()):
                 eventLoop().run()
-        elif(status == statusType.STATUS_RESET):
+        elif(self._status == statusType.STATUS_RESET):
             timerLoop().pause()
             eventLoop().pause()
             # CALL RESET
