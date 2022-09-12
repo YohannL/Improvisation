@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change target IP:
-git stash 
+git checkout -- WebApp/admin/static/public.js WebApp/public/static/public.js WebApp/monitor/static/public.js
 sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/admin/static/public.js
 sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/public/static/public.js
 sed -i 's/192.168.1.34/51.91.101.229/g' WebApp/monitor/static/public.js
