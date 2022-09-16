@@ -1,0 +1,11 @@
+# ignore all logs
+*.log
+
+#pytest_cache
+.pytest_cache
+
+#venv
+.venv
+
+#vscode
+.vscode
