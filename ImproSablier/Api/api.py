@@ -4,9 +4,6 @@ from flask import Flask, jsonify, request
 from Libs.Controller.controllerModel import ControllerModel
  
 ApiApp = Flask(__name__)
-ApiDbg=True
-ApiPort=5000
-ApiHost='0.0.0.0'
 
 # STD API ROUT ==================================================================
 @ApiApp.after_request
@@ -135,6 +132,3 @@ def admin_size():
         return jsonify(status=200, response = response)
     except:
         return jsonify(status=400, message = "Errora")
-
-if __name__ == '__main__':
-    ApiApp.run(host=ApiHost, port=ApiPort, debug=ApiDbg)

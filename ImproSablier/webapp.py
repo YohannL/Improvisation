@@ -1,5 +1,6 @@
 import argparse
 import os
+import configparser
 
 def parse_opt():
     parser = argparse.ArgumentParser()
@@ -10,17 +11,20 @@ def parse_opt():
 
 def main(opt):
     assert not (opt.admin and opt.monitor)
+    config = configparser.ConfigParser()
+    config.read('config.ini')
     if opt.admin:
-        os.environ["FLASK_APP"] = "WebApp/admin/main.py"
-        port = 5003        
+        os.environ["FLASK_APP"] = config['admin']['flask_app']
+        port = config['admin']['port']        
     elif opt.monitor:
-        os.environ["FLASK_APP"] = "WebApp/monitor/main.py"
-        port = 5002
+        os.environ["FLASK_APP"] = config['monitor']['flask_app']
+        port = config['monitor']['port'] 
     else:
-        os.environ["FLASK_APP"] = "WebApp/public/main.py"
-        port = 5001
+        os.environ["FLASK_APP"] = config['public']['flask_app']
+        port = config['public']['port'] 
 
-    os.system(f"flask run --host 0.0.0.0 --port {port}")
+    host=config['api']['apiHost']
+    os.system(f"flask run --host {host} --port {port}")
 
 
 if __name__ == "__main__":
