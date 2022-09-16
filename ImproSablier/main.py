@@ -1,7 +1,7 @@
 from Libs.Controller.controllerEvent import ControllerEvent
 from Libs.Controller.controllerModel import ControllerModel
 from Api.api import *
-from Libs.Log.Logger import Logger
+# from Libs.Log.Logger import Logger
 from Libs.Model.enumeration import statusType
 import configparser
 
@@ -9,9 +9,9 @@ import configparser
 if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('config.ini')
-    name = config['log']['main_name']
-    level = config['log']['level'] 
-    Logger(name=name,levelIn=level)
+    # name = config['log']['main_name']
+    # level = config['log']['level'] 
+    # Logger(name=name,levelIn=level)
     
     if config['api']['apiDbg'] == "True":
         dbg = True
