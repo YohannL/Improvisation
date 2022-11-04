@@ -3,6 +3,16 @@ var API="http://192.168.1.34:5000/";
 var LOOP= true;
 
 let loopCond = true
+class player {
+    constructor(color, isPlaying, time, timeMax){
+        this.color = color;
+        this.isPlaying = isPlaying;
+        this.time = time;
+        this.timeMax = timeMax;
+    }
+
+};
+let playerList = [];
 
 window.onload = async function(){
     loop();
@@ -16,6 +26,7 @@ async function loop() {
     while(true){ //add a better confition
         if(loopCond){
             getPublicSize()
+            getPlayerInfo()
             await sleep(500)
         }else{
             await sleep(1000)
@@ -27,6 +38,64 @@ async function getPublicSize(){
     response = sendToApi('GET', API+"api/v1/admin/publicsize", false)    
     newTxt= [ 'Nombre de personnes connectées: ', JSON.parse(response.response)]
     document.querySelector('#Public_Size').innerText = "".concat(...newTxt);
+}
+
+async function getPlayerInfo(){
+    response = sendToApi('GET', API+"api/v1/player", false)
+    if(response.status === 200){
+        response= JSON.parse(response.response)
+        console.log(response);
+        
+        playerList = []
+        playerList.push(new player(response.playerList[0].color, response.playerList[0].isPlaying, response.playerList[0].time, response.playerList[0].timeMax))
+        playerList.push(new player(response.playerList[1].color, response.playerList[1].isPlaying, response.playerList[1].time, response.playerList[1].timeMax))
+        playerList.push(new player(response.playerList[2].color, response.playerList[2].isPlaying, response.playerList[2].time, response.playerList[2].timeMax))
+        playerList.push(new player(response.playerList[3].color, response.playerList[3].isPlaying, response.playerList[3].time, response.playerList[3].timeMax))
+        console.log(playerList)
+        // give to a manager
+
+        for (let i = 0; i < 4; i++) {
+            switch(playerList[i].color){
+                case "BLUE":
+                    if(!playerList[i].isPlaying){
+                        document.querySelector('#ButtonBlueOn').style.background = "#000088";
+                        document.querySelector('#ButtonBlueOff').style.background = "#0000ff";
+                    }else{
+                        document.querySelector('#ButtonBlueOn').style.background = "#0000ff";
+                        document.querySelector('#ButtonBlueOff').style.background = "#000088";
+                    }
+                    break;
+                case "RED":
+                    if(!playerList[i].isPlaying){
+                        document.querySelector('#ButtonRedOn').style.background = "#880000";
+                        document.querySelector('#ButtonRedOff').style.background = "#ff0000";
+                    }else{
+                        document.querySelector('#ButtonRedOn').style.background = "#ff0000";
+                        document.querySelector('#ButtonRedOff').style.background = "#880000";
+                    }
+                    break;
+                case "GREEN":
+                    if(!playerList[i].isPlaying){
+                        document.querySelector('#ButtonGreenOn').style.background = "#008800";
+                        document.querySelector('#ButtonGreenOff').style.background = "#00ff00";
+                    }else{
+                        document.querySelector('#ButtonGreenOn').style.background = "#00ff00";
+                        document.querySelector('#ButtonGreenOff').style.background = "#008800";
+                    }
+                    break;
+                case "YELLOW":
+                    if(!playerList[i].isPlaying){
+                        document.querySelector('#ButtonYellowOn').style.background = "#b37400";
+                        document.querySelector('#ButtonYellowOff').style.background = "#ffa500";
+                    }else{
+                        document.querySelector('#ButtonYellowOn').style.background = "#ffa500";
+                        document.querySelector('#ButtonYellowOff').style.background = "#b37400";
+                    }
+                    break;
+            }
+      }
+
+    }
 }
 
 async function start(){

@@ -89,7 +89,7 @@ html{
 }
 .buttonred {
     color: white;
-    background-color: red;
+    background-color: #ff0000;
     padding-bottom: 2vh;
     padding-top: 2vh;
     text-align: center;
@@ -102,7 +102,7 @@ html{
 }
 .buttonyellow {
     color: white;
-    background-color: orange;
+    background-color: #ffa500;
     padding-bottom: 2vh;
     padding-top: 2vh;
     text-align: center;
