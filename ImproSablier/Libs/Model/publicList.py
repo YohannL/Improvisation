@@ -45,7 +45,10 @@ class PublicList():
 
     def reset(self):
         for p in self.publics:  
-            p.reset()            
+            p.reset() 
+            
+    def fullreset(self):
+        self.publics.clear()         
             
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, 

@@ -67,6 +67,15 @@ def admin_reset():
     except:
         return jsonify(status=400, message = "Error")
 
+@ApiApp.route('/api/v1/admin/fullreset', methods=['POST'])
+def admin_fullreset():
+    try: 
+        ControllerEvent().admin_changeStatus('PAUSE')
+        response = ControllerEvent().admin_fullreset()
+        return jsonify(status=200)
+    except:
+        return jsonify(status=400, message = "Error")
+
 @ApiApp.route('/api/v1/public/<id>/time/use/<player>', methods=['POST'])
 def public_useTime(id,player):
     try: 

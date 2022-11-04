@@ -28,6 +28,9 @@ class ControllerEvent():
 
     def admin_reset(self):
         self._add_event(eventAdminReset())
+        
+    def admin_fullreset(self):
+        self._add_event(eventAdminFullReset())
 
     def public_useTime(self,id,player):
         self._add_event(eventPublicAddTime(id,player))

@@ -10,6 +10,7 @@ class eventType(Enum):
     ADMIN_REMOVE_TIME = 12 # Remove Time to player
     ADMIN_TIMER_PLAY_STATUS = 13 # Start or Pause Time for a player
     ADMIN_RESET = 14 # Start Time for a player
+    ADMIN_FULLRESET = 14 # Start Time for a player
     GAME_ADD_TIME = 20 # Start Time for a player
 
 class eventPriority(Enum):
@@ -107,6 +108,10 @@ class eventAdminStartTimer(event):
 class eventAdminReset(event):
     def __init__(self):
         super().__init__(type= eventType.ADMIN_RESET,priority=eventPriority.EVENT_PRIORITY_ADMIN)
+        
+class eventAdminFullReset(event):
+    def __init__(self):
+        super().__init__(type= eventType.ADMIN_FULLRESET,priority=eventPriority.EVENT_PRIORITY_ADMIN)
 
 class eventTest(event):
     def __init__(self):

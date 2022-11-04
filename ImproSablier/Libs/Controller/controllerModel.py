@@ -48,6 +48,9 @@ class ControllerModel():
 
     def admin_reset(self):
         self.model.admin_reset()
+        
+    def admin_fullreset(self):
+        self.model.admin_fullreset()
 
     def get_Public(self, id):
         return self.model.get_Public(id)

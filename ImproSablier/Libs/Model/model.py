@@ -71,6 +71,11 @@ class Model():
         self.PlayerList.reset()
         self.PublicList.reset()
         return True
+    
+    def admin_fullreset(self):
+        self.PlayerList.reset()
+        self.PublicList.fullreset()
+        return True
 
     def admin_removeTime(self, player):
         self.PlayerList.remove_Time(player, -1)

@@ -23,6 +23,7 @@ class eventHandler():
             eventType.ADMIN_ADD_TIME:self._handle_adminAddTime,
             eventType.ADMIN_TIMER_PLAY_STATUS:self._handle_adminChangeStatusPlayer,
             eventType.ADMIN_RESET:self._handle_adminReset,
+            eventType.ADMIN_FULLRESET:self._handle_adminFullReset,
             eventType.ADMIN_REMOVE_TIME:self._handle_adminRemoveTime,
             eventType.GAME_ADD_TIME:self._handle_adminAddTime
         }
@@ -48,6 +49,9 @@ class eventHandler():
 
     def _handle_adminReset(self,eventToHandle: event):
         ControllerModel().admin_reset()
+        
+    def _handle_adminFullReset(self,eventToHandle: event):
+        ControllerModel().admin_fullreset()
 
     def _handle_errorEvent(self,eventToHandle: event):
         raise("_handle_errorEvent")

@@ -44,6 +44,11 @@ async function reset(){
     loopCond = true
 }
 
+async function fullreset(){
+    response = sendToApi('POST', API+"api/v1/admin/fullreset", false)
+    loopCond = true
+}
+
 async function onRed(){
     response = sendToApi('POST', API+"api/v1/admin/timer/on/RED", false)
 }
